@@ -1,0 +1,1 @@
+A ideia do voluntree é um site de atividades de voluntariado para causas ambientais. A unica validaçao e requisiçao ao banco de dados que quero fazer é saber se o usuario é ou nao cadastrado, a ideia é de so exisir 3 páginas no site, a de login, cadastro e a principal.

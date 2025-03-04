@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home | Voluntree</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao Voluntree, {{ user.username }}!</h1>
+    
+    <p>Esta é a página principal do sistema. Aqui você encontrará informações sobre voluntariado ambiental.</p>
+    
+    <p><a href="{% url 'accounts:logout' %}">Sair</a></p>
+</body>
+</html>
