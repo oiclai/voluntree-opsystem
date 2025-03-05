@@ -1,5 +1,7 @@
 from django.db import models
-from accounts.models import * # Organization, Volunteer
+from accounts.models import * # Organization, Volunteer, permissoes
+from django.core.exceptions import PermissionDenied
+
 
 class Volunteer_Project(models.Model):
     nome = models.CharField(max_length=200)
@@ -11,11 +13,14 @@ class Volunteer_Project(models.Model):
     voluntarios = models.ManyToManyField(Volunteer)  # relacionamento N:N com os voluntários
     data_criacao = models.DateTimeField(auto_now_add=True)
     
-def qtd_volunteers(self):
-        # voluntários inscritos ao projeto
-        return self.voluntarios.count()
-
-def duration(self):
-    return self.data_fim - self.data_inicio
-def __str__(self):
-    return self.nome
+    def qtd_volunteers(self):
+            # voluntários inscritos ao projeto
+            return self.voluntarios.count()
+    def save(self, *args, **kwargs):
+            if not self.organizacao.user.user_type == 'organization':
+                raise PermissionDenied("Apenas organizações podem criar projetos.")
+            super().save(*args, **kwargs)
+    def duration(self):
+        return self.data_fim - self.data_inicio
+    def __str__(self):
+        return self.nome
