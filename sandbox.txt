@@ -3,3 +3,5 @@ CREATE USER 'voluntree_user'@'localhost' IDENTIFIED BY 'senha_segura';
 GRANT ALL PRIVILEGES ON voluntree_db.* TO 'voluntree_user'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
+
+waitress-serve --host=0.0.0.0 --port=8000 voluntree.wsgi:application
