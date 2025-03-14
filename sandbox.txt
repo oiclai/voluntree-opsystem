@@ -38,3 +38,12 @@ http {
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+C:\nssm\win64\nssm.exe install VoluntreeDjango
+Start-Service VoluntreeDjango
+C:\nssm\win64\nssm.exe install Nginx
+Start-Service Nginx
+Set-Service -Name VoluntreeDjango -StartupType Automatic
+Set-Service -Name Nginx -StartupType Automatic
+New-NetFirewallRule -DisplayName "Allow HTTP" -Direction Inbound -Protocol TCP -LocalPort 80 -Action Allow
+Get-NetFirewallProfile
