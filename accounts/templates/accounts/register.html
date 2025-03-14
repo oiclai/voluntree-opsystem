@@ -29,7 +29,12 @@
         {{ form.as_p }}
         <button type="submit" class="btn">Registrar</button>
     </form>
-    
-    <p>Já tem uma conta? <a href="{% url 'accounts:login' %}">Faça login</a></p>
+    <p>Já tem uma conta? <button id="botao">Faça Login</button>
+
+<script>
+    document.getElementById("botao").addEventListener("click", function() {
+        window.location.href = "{% url 'accounts:login' %}";
+    });
+</script>
 </body>
 </html>
